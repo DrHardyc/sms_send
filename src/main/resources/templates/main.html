@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="${some} + '!'"/>
+<div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
+    <form method="post">
+        <input type="text" name="text" placeholder="Введите сообщение" />
+        <button type="submit">Добавить</button>
+    </form>
+    <form method="post" action="filter">
+        <input type="text" name="text">
+        <button type="submit">Найти</button>
+    </form>
+</div>
+<div th:each="message : ${messages}">
+    <div>
+        <i th:text="${message.id}">Onions</i>
+        <b th:text="${message.text}">2.41</b>
+    </div>
+</div>
 </body>
 </html>
